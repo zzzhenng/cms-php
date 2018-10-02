@@ -19,6 +19,8 @@
       endwhile;
     ?>
 
+    <a href="admin" class="nav-item nav-link">admin</a>
+
     </div>
   </div>
 </nav>
