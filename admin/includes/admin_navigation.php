@@ -22,7 +22,7 @@
             <div class="collapse" id="collapse1" style="width: 80%; margin: auto;" >
               <ul class="list-group">
                 <li class="list-group-item"><a href="./posts.php">VIew All Posts</a></li>
-                <li class="list-group-item"><a>Add Posts</a></li>
+                <li class="list-group-item"><a href="posts.php?source=add_post">Add Posts</a></li>
               </ul>
             </div>
           <li><a href="./categories.php">Categories</a></li>
@@ -33,5 +33,5 @@
 
     </div><!-- end col-3 -->
 
-  </div>
-</div>
+  <!-- </div>
+</div> -->

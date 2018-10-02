@@ -1,7 +1,8 @@
 <?php include "includes/admin_header.php" ?>
 
+<?php include "includes/admin_navigation.php" ?>
 <!-- nav bar -->
-<nav class="navbar navbar-inverse">
+<!-- <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="#">CMS Admin</a>
@@ -12,14 +13,14 @@
       <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
     </ul>
   </div>
-</nav>
+</nav> -->
 
 
-<div class="container-fluid">
-  <div class="row">
+<!-- <div class="container-fluid">
+  <div class="row"> -->
 
     <!-- 左边列表 -->
-    <div class="col-md-3">
+    <!-- <div class="col-md-3">
       <ul class="nav nav-pills nav-stacked">
           <li class="active"><a href="#">Dashboard</a></li>
           <li><a href="#collapse1" class="dropdown-toggle" data-toggle="collapse">Posts<span class="caret"></span></a></li>
@@ -35,7 +36,7 @@
           <li><a href="#">PRofile</a></li>
       </ul>
 
-    </div><!-- end col-3 -->
+    </div>end col-3 -->
 
     <!-- 右边列表 -->
     <div class="col-md-9">
