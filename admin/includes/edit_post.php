@@ -4,6 +4,7 @@
     $the_post_id = $_GET['p_id'];
 
   }
+  // grap old data to display
   $query = "SELECT * FROM posts WHERE post_id = {$the_post_id}";
   $select_posts_by_id = mysqli_query($connection, $query);
 
@@ -24,7 +25,19 @@
   if (isset($_POST['update_post'])) {
     $post_title = $_POST['post_title'];
     $post_author = $_POST['post_author'];
-    $post_category_id = $_POST['post_category'];
+    $post_category = $_POST['post_category'];
+
+    // 插入新的post时，把提交的category 从表中查到其 ID，储存到post表中
+    $query_post_id = "SELECT cat_id FROM categories ";
+    $query_post_id .= "WHERE cat_title = '$post_category' ";
+    $result = mysqli_query($connection,$query_post_id);
+    confirm($result);
+    if($row = mysqli_fetch_array($result)) {
+      echo $post_category_id = $row[0];
+    } else {
+      $post_category_id = 000000;
+    }
+
     $post_status = $_POST['post_status'];
 
     $post_image = $_FILES['image']['name'];
@@ -45,16 +58,19 @@
     }
 
 
-    $quqery = "UPDATE posts SET ";
+    $query = "UPDATE posts SET ";
     $query .= "post_title = '{$post_title}', ";
-    $query .= "post_category_id = '{$post_category_id}', ";
-    $query .= "post_data = now(), ";
+    $query .= "post_category_id = {$post_category_id}, ";
+    $query .= "post_date = now(), ";
     $query .= "post_author = '{$post_author}', ";
     $query .= "post_status = '{$post_status}', ";
     $query .= "post_tags = '{$post_tags}', ";
     $query .= "post_content = '{$post_content}', ";
     $query .= "post_image = '{$post_image}' ";
     $query .= "WHERE post_id = {$the_post_id} ";
+
+    $query_post = mysqli_query($connection,$query);
+    confirm($query_post);
   }
 ?>
 

@@ -30,8 +30,8 @@
           <li><a href="#collapse2" class="dropdown-toggle" data-toggle="collapse">Users<span class="caret"></span></a></li>
             <div class="collapse" id="collapse2" style="width: 80%; margin: auto;" >
               <ul class="list-group">
-                <li class="list-group-item"><a href="./posts.php">VIew All Posts</a></li>
-                <li class="list-group-item"><a href="posts.php?source=add_post">Add Posts</a></li>
+                <li class="list-group-item"><a href="./users.php">VIew All users</a></li>
+                <li class="list-group-item"><a href="users.php?source=add_user">Add User</a></li>
               </ul>
             </div>
           <li><a href="#">PRofile</a></li>
