@@ -10,8 +10,10 @@
       <th>Status</th>
       <th>Image</th>
       <th>Tags</th>
-      <th>Comments</th>
+      <th>Comments Count</th>
       <th>Date</th>
+      <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -51,7 +53,18 @@
         echo "<td>$post_status</td>";
         echo "<td><img width='100' src='../images/$post_image' alt='image' ></td>";
         echo "<td>$post_tags</td>";
-        echo "<td>$post_comment_count</td>";
+
+        // 连接表 comments 查出这个post的评论个数
+        $query = "SELECT COUNT(comment_post_id) FROM comments WHERE comment_post_id = $post_id ";
+        $query .= "GROUP BY comment_post_id";
+        $post_comment_count_query = mysqli_query($connection,$query);
+        confirm($post_comment_count_query);
+        if ($row = mysqli_fetch_array($post_comment_count_query,MYSQLI_NUM)) {
+          echo "<td>$row[0]</td>";
+        } else {
+          echo "<td>0</td>";
+        }
+
         echo "<td>$post_date</td>";
 
         echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
