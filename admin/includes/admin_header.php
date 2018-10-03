@@ -1,5 +1,14 @@
 <?php include "../includes/db.php" ?>
 <?php include "functions.php" ?>
+<?php session_start(); ?>
+
+<?php
+  if(!isset($_SESSION['user_role'])) {
+    if($_SESSION['user_role'] !== 'admin') {
+      header("Location: ../index.php");
+    }
+  }
+?>
 <!doctype html>
 <html lang="en">
   <head>
