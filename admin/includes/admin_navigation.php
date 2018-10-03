@@ -37,7 +37,7 @@
                 <li class="list-group-item"><a href="users.php?source=add_user">Add User</a></li>
               </ul>
             </div>
-          <li><a href="#">PRofile</a></li>
+          <li><a href="./profile.php">Profile</a></li>
       </ul>
 
     </div><!-- end col-3 -->
