@@ -5,7 +5,7 @@
       <a class="navbar-brand" href="index.php">CMS Admin</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li><a href="/cms">HOME SITE</a></li>
+      <li><a href="/cms-php">HOME SITE</a></li>
 
        <li><a href="#"><span class="glyphicon glyphicon-user"></span><?php echo $_SESSION['username'] ?></a></li>
 

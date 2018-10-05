@@ -23,4 +23,10 @@
 
     </div>
   </div>
+  <ul class="nav justify-content-end">
+      <li class="nav-item">
+        <a href="registration.php" class="nav-link">register</a>
+      </li>
+
+    </ul>
 </nav>
