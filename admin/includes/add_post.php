@@ -4,7 +4,7 @@
 
     $post_title = $_POST['title'];
     $post_author = $_POST['author'];
-    $post_category_id = $_POST['post_category'];
+    $post_category = $_POST['post_category'];
     $post_status = $_POST['post_status'];
 
     $post_image = $_FILES['image']['name'];
@@ -16,6 +16,13 @@
     // $post_comment_count = 4;
 
     move_uploaded_file($post_image_temp, "../images/$post_image");
+
+    // 将这个post的类型外联 categories 表找到 id 存储到 posts 表中
+    $query_post_category_id = "SELECT cat_id from categories WHERE cat_title = '{$post_category}' ";
+    $query_post_category_id_result = mysqli_query($connection,$query_post_category_id);
+    while($row = mysqli_fetch_array($query_post_category_id_result)) {
+      $post_category_id = $row[0];
+    }
 
     $query = "INSERT INTO posts(post_category_id, post_title, post_author, post_date, post_image, post_content, post_tags,  post_status) ";
 
