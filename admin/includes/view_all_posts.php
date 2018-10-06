@@ -1,8 +1,55 @@
 <!-- view all posts panel page -->
 <h1>Welcome to view all posts</h1>
+
+<?php
+    // 利用 checkbox 批量更新表中数据的状态
+    if(isset($_POST['checkBoxArray'])){
+      echo "2345345234";
+      foreach($_POST['checkBoxArray'] as $postValueId) {
+
+        $bulk_options = $_POST['bulk_options'];
+        switch($bulk_options) {
+          case 'published':
+            $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId}";
+            $update_to_published_status = mysqli_query($connection,$query);
+            confirm($update_to_published_status);
+            break;
+          case 'draft':
+            $query = "UPDATE posts SET post_status = '{$bulk_options}' WHERE post_id = {$postValueId}";
+            $update_to_draft_status = mysqli_query($connection,$query);
+            confirm($update_to_draft_status);
+            break;
+          case "delete":
+            $query = "DELETE FROM posts WHERE post_id = {$postValueId}";
+            $delete_selected_posts = mysqli_query($connection,$query);
+            confirm($delete_selected_posts);
+            break;
+        }
+      }
+    }
+
+?>
+
+
+<form method="post" action="">
+  <div class="col-xs-4">
+    <select name="bulk_options" id="" class="form-control">
+      <option value="">Select Options</option>
+      <option value="published">Publish</option>
+      <option value="draft">Draft</option>
+      <option value="delete">Delete</option>
+    </select>
+  </div>
+  <div class="col-xs-4">
+    <button type="submit" name="apply" class="btn btn-success">Apply</button>
+    <a href="posts.php?source=add_post" class="btn btn-primary">Add New</a>
+  </div>
+<!-- </form> -->
+
 <table class="table table-bordered">
   <thead>
     <tr>
+      <th><input type="checkbox" id="selectAllBoxes"></th>
       <th>Id</th>
       <th>Author</th>
       <th>Title</th>
@@ -12,6 +59,7 @@
       <th>Tags</th>
       <th>Comments Count</th>
       <th>Date</th>
+      <th>View Post</th>
       <th>Edit</th>
       <th>Delete</th>
     </tr>
@@ -34,6 +82,9 @@
         $post_date = $row['post_date'];
 
         echo "<tr>";
+
+        echo "<td><input class='checkBox' type='checkbox' name='checkBoxArray[]' value='$post_id'></td>";
+
         echo "<td>$post_id</td>";
         echo "<td>$post_author</td>";
         echo "<td>$post_title</td>";
@@ -66,7 +117,7 @@
         }
 
         echo "<td>$post_date</td>";
-
+        echo "<td><a href='../post.php?p_id={$post_id}'>View Post</a></td>";
         echo "<td><a href='posts.php?source=edit_post&p_id={$post_id}'>Edit</a></td>";
         echo "<td><a href='posts.php?delete={$post_id}'>Delete</a></td>";
         echo "</tr>";
@@ -75,6 +126,8 @@
     ?>
   </tbody>
 </table>
+
+</form><!-- end form -->
 
 <?php
   // delete post

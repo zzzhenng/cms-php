@@ -33,11 +33,12 @@
       <img src="images/<?php echo $post_image ?>" alt="image">
       <hr>
       <p><?php echo $post_content ?></p>
-      <a href="" class="btn btn-primary">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+
       <hr>
 
 
       <?php
+      // create new comment
         if(isset($_POST['create_comment'])) {
           $the_post_id = $_GET['p_id'];
           $comment_author = $_POST['comment_author'];

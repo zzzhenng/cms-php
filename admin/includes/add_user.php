@@ -11,7 +11,7 @@
     // $user_image_temp = $_FILES['image']['tmp_name'];
 
     $user_email = $_POST['user_email'];
-    $user_password = $_POST['user_password'];
+    $user_password = password_hash($_POST['user_password'], PASSWORD_DEFAULT, array('cost' => 10));
 
 
     // move_uploaded_file($post_image_temp, "../images/$post_image");
@@ -22,6 +22,8 @@
 
     $create_user_query = mysqli_query($connection, $query);
     confirm($create_user_query);
+
+    echo "View user: " .  "<a href='users.php'>{$username}</a>";
   }
 
 ?>
@@ -38,15 +40,17 @@
     <select name="user_role" id="">
       <?php
           // get user role categories
-          $query = "SELECT * FROM users";
-          $select_users = mysqli_query($connection, $query);
-          confirm($select_users);
-          while ($row = mysqli_fetch_assoc($select_users)):
-            $user_id = $row['user_id'];
-            $user_role = $row['user_role'];
-            echo "<option vlaue='$user_id'>{$user_role}</option>";
-          endwhile;
+          // $query = "SELECT * FROM users";
+          // $select_users = mysqli_query($connection, $query);
+          // confirm($select_users);
+          // while ($row = mysqli_fetch_assoc($select_users)):
+          //   $user_id = $row['user_id'];
+          //   $user_role = $row['user_role'];
+          //   echo "<option vlaue='$user_id'>{$user_role}</option>";
+          // endwhile;
       ?>
+      <option value="Admin">Admin</option>
+      <option value="Subscriber">Subscriber</option>
     </select>
     <label>User Category</label>
   </div>
